@@ -1,0 +1,21 @@
+name: Build
+run-name: Deploy branch ${{ github.ref_name }} to ${{ inputs.environment }} by @${{ github.actor }}
+
+on:
+  pull_request:
+    branches: main
+    types:
+      - labeled
+      - opened
+      - edited
+      - closed
+      - reopened
+      - labeled
+      - unlabeled
+      - synchronize
+  workflow_dispatch:
+
+jobs:
+  BuildSomething:
+    uses: stpride/.github/.github/workflows/build-something.yaml@main
+    secrets: inherit
